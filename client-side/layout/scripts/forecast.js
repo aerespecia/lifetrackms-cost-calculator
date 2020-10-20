@@ -30,7 +30,7 @@ jQuery(document).ready(function(){
                     $('#resultsTable > tbody:last-child').append(
                         '<tr><td>'+data[i]["monthYear"]+
                         '</td><td>'+data[i]["studiesTotal"]+
-                        '</td><td>'+data[i]["costForcasted"]+'</td></tr>'
+                        '</td><td>$'+data[i]["costForcasted"]+'</td></tr>'
                     );
                 }
 
