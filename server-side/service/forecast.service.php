@@ -19,7 +19,7 @@ class ForecastService {
             return json_encode($this->forecastResult);
 
         $increaseFactor = ($noStudyGrowthPercentage/100)+1;
-        $monthYear = date("M Y",strtotime($date));
+        $monthYear = date(Constants::MONTH_DATE_FORMAT,strtotime($date));
 
         $totalStudyInMonth = $noStudyPerDay*$increaseFactor;
         $totalRamCostPerMonth = $this->computeRAMCost($totalStudyInMonth);
@@ -31,10 +31,10 @@ class ForecastService {
 
         // Get next date plus 1 month
         $nextDate = date_create($date);
-        date_add($nextDate, date_interval_create_from_date_string("1 month"));
+        date_add($nextDate, date_interval_create_from_date_string(Constants::DATE_INTERVAL));
 
         return $this->calculateForecast(
-            date_format($nextDate, "Y-m-d"),
+            date_format($nextDate, Constants::DATE_FORMAT),
             $totalStudyInMonth,
             $noStudyGrowthPercentage,
             $noOfMonthsToForecast
@@ -59,6 +59,5 @@ class ForecastService {
         return $total;
     }
 }
-
 
 ?>

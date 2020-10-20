@@ -1,6 +1,10 @@
 <?php
 
 class Constants {
+    const DATE_FORMAT = "Y-m-d";
+    const DATE_INTERVAL = "1 month";
+    const MONTH_DATE_FORMAT = "M Y";
+
     const HOURS_IN_MONTH = 720;
     const RAM_COST_PER_HOUR_PER_GB = 0.00553;
     const STORAGE_COST_PER_MONTH_PER_GB = 0.10;
