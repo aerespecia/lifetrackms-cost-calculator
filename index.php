@@ -16,6 +16,7 @@
 		<link href="client-side/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Theme Styles-->
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		
 	</head>
 	<!--end::Head-->
 	<?php require './client-side/layout/base/base.php'; ?>

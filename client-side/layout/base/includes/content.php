@@ -16,14 +16,14 @@
                                     <div class="col-xl-3">
                                         <div class="form-group">
                                             <label>Current Number of Study per day</label>
-                                            <input type="number" class="form-control" placeholder="Enter number of cases"/>
+                                            <input type="number" id="noStudyPerday" class="form-control" placeholder="Enter number of cases"/>
                                         </div>
                                     </div>
                                     <div class="col-xl-3">
                                         <div class="form-group">
                                             <label>Number of Study Growth per Month in %</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Enter percentage growth">
+                                                <input type="number" id="noStudyGrowthPercentage" class="form-control" placeholder="Enter percentage growth">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">
                                                         <i class="la la-percent icon-lg"></i>
@@ -35,13 +35,13 @@
                                     <div class="col-xl-3">
                                         <div class="form-group">
                                             <label>Number of Months to Forecast</label>
-                                            <input type="number" class="form-control" placeholder="Enter number of months"/>
+                                            <input type="number" id="noOfMonthsToForecast" class="form-control" placeholder="Enter number of months"/>
                                         </div>
                                     </div>
                                     <div class="col-xl-3">
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="button" class="btn btn-primary btn-lg btn-block">Generate Forecast</button>
+                                            <button type="button" id="generateForecast" class="btn btn-primary btn-lg btn-block">Generate Forecast</button>
                                         </div>
                                     </div>
                                 </div>	
@@ -63,16 +63,26 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <p>Current Number of Study per day: <span id="labelNoStudies" class="font-weight-boldest"></span></p>
+                                </div>
+                                <div class="col-xl-4">
+                                    <p>Number of Study Growth per Month in %: <span id="labelStudyGrowth" class="font-weight-boldest"></span></p>
+                                </div>
+                                <div class="col-xl-4">
+                                    <p>Number of Months to Forecast: <span id="labelMonthsForecast" class="font-weight-boldest"></span></p>
+                                </div>
+                            </div>
                             <!--begin::Example-->
                             <div class="example mb-10">
                                 <div class="example-preview">
-                                    <table class="table table-striped mb-6">
+                                    <table id="resultsTable" class="table table-striped mb-6">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Month Year</th>
                                                 <th scope="col">Number of Studies</th>
                                                 <th scope="col">Cost Forcasted</th>
-                                                <th scope="col">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>

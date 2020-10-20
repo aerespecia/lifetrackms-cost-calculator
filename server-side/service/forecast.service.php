@@ -26,7 +26,7 @@ class ForecastService {
         $totalStorageCostPerMonth = $this->computeStorageCost($totalStudyInMonth);
         $totalCost = number_format($totalRamCostPerMonth + $totalStorageCostPerMonth,2);
 
-        $result = new Forecast($monthYear, $totalStudyInMonth, $totalCost);
+        $result = new Forecast($monthYear, number_format($totalStudyInMonth), $totalCost);
         array_push($this->forecastResult, $result);
 
         // Get next date plus 1 month
