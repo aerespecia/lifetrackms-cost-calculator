@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
 
         $.ajax({
             type:"POST",
-            url: "/lifetrack-cost-calculator/server-side/api/calculate-forecast.php",
+            url: "/server-side/api/calculate-forecast.php",
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(forecastInput),
@@ -36,6 +36,5 @@ jQuery(document).ready(function(){
 
             }
         });
-        console.log('tes');
     });
 });
