@@ -9,18 +9,17 @@ use Model\Forecast;
 
 class ForecastService {
     public $forecastResult = array();
-    public $date;
 
     /**
      * Calculate total forecast cost recursively
      */
-    public function calculateForecast($noStudyPerDay, $noStudyGrowthPercentage, $noOfMonthsToForecast) {
+    public function calculateForecast($date, $noStudyPerDay, $noStudyGrowthPercentage, $noOfMonthsToForecast) {
 
         if($noOfMonthsToForecast == count($this->forecastResult))
-            return $this->forecastResult;
-        $date = date_create("");
+            return json_encode($this->forecastResult);
+
         $increaseFactor = ($noStudyGrowthPercentage/100)+1;
-        $monthYear = date("M Y",time());
+        $monthYear = date("M Y",strtotime($date));
 
         $totalStudyInMonth = $noStudyPerDay*$increaseFactor;
         $totalRamCostPerMonth = $this->computeRAMCost($totalStudyInMonth);
@@ -30,7 +29,16 @@ class ForecastService {
         $result = new Forecast($monthYear, $totalStudyInMonth, $totalCost);
         array_push($this->forecastResult, $result);
 
-        return $this->calculateForecast($totalStudyInMonth, $noStudyGrowthPercentage, $noOfMonthsToForecast);
+        // Get next date plus 1 month
+        $nextDate = date_create($date);
+        date_add($nextDate, date_interval_create_from_date_string("1 month"));
+
+        return $this->calculateForecast(
+            date_format($nextDate, "Y-m-d"),
+            $totalStudyInMonth,
+            $noStudyGrowthPercentage,
+            $noOfMonthsToForecast
+        );
     }
 
     /**
@@ -51,9 +59,6 @@ class ForecastService {
         return $total;
     }
 }
-
-$ramCostTemp = new ForecastService();
-echo json_encode($ramCostTemp->calculateForecast(10000000,3,4));
 
 
 ?>
